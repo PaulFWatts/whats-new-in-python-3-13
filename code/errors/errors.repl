@@ -1,0 +1,6 @@
+>>> "Better error messages".split(max_split=1)
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    "Better error messages".split(max_split=1)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+TypeError: split() got an unexpected keyword argument 'max_split'. Did you mean 'maxsplit'?

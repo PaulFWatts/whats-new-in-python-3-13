@@ -1,0 +1,17 @@
+$ python3.12 print_dogdoc.py
+This class contains information about a wolf
+
+    This is what it looks like:
+
+        >>> w = Wolf()
+        >>> w
+        Hooooowwwwwwl!
+
+$ python3.13 print_dogdoc.py
+This class contains information about a wolf
+
+This is what it looks like:
+
+    >>> w = Wolf()
+    >>> w
+    Hooooowwwwwwl!

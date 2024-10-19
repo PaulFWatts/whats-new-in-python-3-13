@@ -1,0 +1,16 @@
+$ python random.py
+Traceback (most recent call last):
+  File "/Users/ctrudeau/code/random.py", line 1, in <module>
+    import random
+  File "/Users/ctrudeau/code/random.py", line 2, in <module>
+    print(random.randint(5))
+          ^^^^^^^^^^^^^^
+AttributeError: module 'random' has no attribute 'randint' (consider renaming '/Users/ctrudeau/code/random.py' since it has the same name as the standard library module named 'random' and the import system gives it precedence)
+$ python numpy.py
+Traceback (most recent call last):
+  File "/Users/ctrudeau/code/numpy.py", line 1, in <module>
+    import numpy as np
+  File "/Users/ctrudeau/code/numpy.py", line 2, in <module>
+    print(np.array([1, 2, 3]))
+          ^^^^^^^^
+AttributeError: module 'numpy' has no attribute 'array' (consider renaming '/Users/ctrudeau/code/numpy.py' if it has the same name as a third-party module you intended to import)

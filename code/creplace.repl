@@ -1,0 +1,43 @@
+>>> import copy
+>>> from typing import NamedTuple
+>>> class Person(NamedTuple):
+...     name: str
+...     place: str
+...     python_version: str
+...
+>>> person = Person("Geir Arne", "Oslo", "3.12")
+>>> person
+Person(name='Geir Arne', place='Oslo', python_version='3.12')
+>>> copy.replace(person, python_version="3.13")
+Person(name='Geir Arne', place='Oslo', python_version='3.13')
+>>> person
+Person(name='Geir Arne', place='Oslo', python_version='3.12')
+>>> # copy.replace() works on several different kinds of objects, including
+>>> # NamedTuple, dataclasses, SimpleNamespace, datetime, etc.
+>>> from datetime import datetime
+>>> today = datetime.today()
+>>> today
+datetime.datetime(2024, 9, 16, 14, 22, 53, 142370)
+>>> copy.replace(today, hour=0, minute=0, second=0, microsecond=0)
+datetime.datetime(2024, 9, 16, 0, 0)
+>>> # Support for custom classes through .__replace__()
+>>> class Container:
+...     def __init__(self, name, **items):
+...         print(f"Initializing {name} with {items}")
+...         self.name = name
+...         self.items = items
+...     def __replace__(self, **kwargs):
+...         print(f"Replacing {kwargs}")
+...         cls = type(self)
+...         init_kwargs = {"name": self.name, **self.items} | kwargs
+...         return cls(**init_kwargs)
+...     def __repr__(self):
+...         items = [f"{key}={value!r}" for key, value in self.items.items()]
+...         return f"{type(self).__name__}(name='{self.name}', {", ".join(items)})"
+...
+>>> cc = Container("capitals", norway="oslo", sweden="Stockholm", denmark="Copenhagen")
+Initializing capitals with {'norway': 'oslo', 'sweden': 'Stockholm', 'denmark': 'Copenhagen'}
+>>> copy.replace(cc, norway="Oslo")
+Replacing {'norway': 'Oslo'}
+Initializing capitals with {'norway': 'Oslo', 'sweden': 'Stockholm', 'denmark': 'Copenhagen'}
+Container(name='capitals', norway='Oslo', sweden='Stockholm', denmark='Copenhagen')

@@ -1,0 +1,14 @@
+$ python3.12 print_catdoc.py
+
+        This class contains information about a Tiger.
+
+            >>> t = Tiger()
+            >>> t
+            Grrrrreat!
+$ python3.13 print_catdoc.py
+
+This class contains information about a Tiger.
+
+    >>> t = Tiger()
+    >>> t
+    Grrrrreat!

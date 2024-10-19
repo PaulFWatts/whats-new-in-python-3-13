@@ -1,0 +1,16 @@
+$ python -m random one two three "four five"
+two
+$ python -m random one two three "four five"
+one
+$ python -m random one two three "four five"
+four five
+$ python -m random 42
+7
+$ python -m random 3.14
+1.494460969642951
+$ python -m random --choice one two three
+three
+$ python -m random --integer 42
+28
+$ python -m random --float 3.14
+1.5168057094238938

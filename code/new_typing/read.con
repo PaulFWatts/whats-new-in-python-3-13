@@ -1,0 +1,7 @@
+$ python readonly.py
+3.12
+$ pyright --pythonversion 3.13 readonly.py
+/Users/ctrudeau/code/new_typing/readonly.py
+  /Users/ctrudeau/code/new_typing/readonly.py:8:1 - error: Could not assign item in TypedDict
+    "version" is a read-only key in "PythonVersion" (reportTypedDictNotRequiredAccess)
+1 error, 0 warnings, 0 informations

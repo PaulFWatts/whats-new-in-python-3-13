@@ -1,0 +1,54 @@
+>>> from pathlib import Path
+>>> # Existing .as_uri() feature
+>>> hosts = Path('/etc/hosts')
+>>> hosts.as_uri()
+'file:///etc/hosts'
+>>> # New URI path factory
+>>> path = Path.from_uri('file:///etc/hosts')
+>>> path
+PosixPath('/etc/hosts')
+>>> # New .full_match()
+>>> Path('a/b.py').full_match('a/*.py')
+True
+>>> Path('a/b.py').full_match('b/*.py')
+False
+>>> Path('a/b.py').full_match('*.py')
+False
+>>> Path('a/b/c.py').full_match('a/**')
+True
+>>> Path('a/b/c.py').full_match('**/c.py')
+True
+>>> Path('a/b/c.py').full_match('**/*.py')
+True
+>>> # .glob() on **
+>>> Path('music')
+PosixPath('music')
+>>> Path('music').glob('*')
+<map object at 0x100e39600>
+>>> def show(paths):
+...     for path in paths:
+...         print(path)
+...
+>>> show(Path('music').glob('*'))
+music/opera
+music/rap
+>>> show(Path('music').glob('opera/*'))
+music/opera/habanera.txt
+music/opera/flower_duet.txt
+music/opera/nabucco.txt
+>>> show(Path('music').glob('*.txt'))
+>>> show(Path('music').glob('**/*.txt'))
+music/opera/habanera.txt
+music/opera/flower_duet.txt
+music/opera/nabucco.txt
+music/rap/fight_the_power.txt
+music/rap/bedlam_13-13.txt
+>>> show(Path('music').glob('**'))
+music
+music/opera
+music/rap
+music/rap/fight_the_power.txt
+music/rap/bedlam_13-13.txt
+music/opera/habanera.txt
+music/opera/flower_duet.txt
+music/opera/nabucco.txt

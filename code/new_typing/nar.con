@@ -1,0 +1,6 @@
+$ pyright --pythonversion 3.13 narrowing.py
+/Users/ctrudeau/code/new_typing/narrowing.py
+  /Users/ctrudeau/code/new_typing/narrowing.py:13:12 - error: Type "Tree | int" is not assignable to return type "int"
+    Type "Tree | int" is not assignable to type "int"
+      "list[Tree | int]" is not assignable to "int" (reportReturnType)
+1 error, 0 warnings, 0 informations
